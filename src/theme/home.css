@@ -1,0 +1,49 @@
+.bg{
+  background-image: url("../assets/images/bgImg.jpg");
+  background-repeat: no-repeat;
+  background-position: 0%;
+  background-size: cover;
+}
+
+
+.l1{
+  font-weight:900;
+  font-size: 60px;
+  text-decoration-color: #1853d3;
+  text-align: center;
+  
+}
+
+ section {
+    margin-top: 17em;
+    padding: 0 px;
+    padding-top: 10;
+    
+  } 
+
+.IonContent{
+  opacity: 0.8;
+} 
+
+
+  /* section:not(.full-width),
+  .full-width > header {
+    padding: 0 100px;
+  } */
+/* .btn2{
+    padding-top: 10px;
+   
+} */
+/* Login.p{
+  padding-top: initial;
+} */
+
+
+
+/* .my-custom-interface .select-interface-option .alert-radio-label {
+  color: #971e49;
+} */
+
+/* .conbtn{
+  
+} */

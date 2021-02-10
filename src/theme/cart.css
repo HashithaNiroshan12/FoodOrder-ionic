@@ -1,0 +1,41 @@
+@media only screen and (min-width: 992px) {
+}
+
+.total{
+    padding-top: 5px;
+    padding-right: 0;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: lightcyan;
+}
+.btnCheckout{
+    
+    /* top: 0px; */
+   padding-left: 50px;
+    bottom: 30px;
+}
+.lblTotal{
+    position: relative;
+    text-align: left;
+    color: rgb(90, 70, 70);
+    font-size: 20px;
+}
+.lblTprice{
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.btnRemove{
+ 
+    padding-right: 50px;
+    
+}
+
+.totalPrice{
+    font-weight: 800;
+    
+}
+
+.quanty{
+    font-weight: 600;
+}

@@ -1,0 +1,20 @@
+.text-input{
+    font-weight: 600;
+    font-size: medium;
+}
+
+.ion-header{
+    text-align: center;
+    font-size: 18px;
+}
+
+/* .card{
+    
+    height: 75%;
+    padding-top: 66px;
+    
+} */
+
+.payment-info{
+  height: 75px;
+}
