@@ -4,17 +4,6 @@ const defaultState = {
     basketNumbers : 0  
 }
 
-// const initialState = {
-//     basketNumbers : 0
-// }
-
-
-// export default (state:any, action:any) => {
-//     switch(action, type:any){
-//         default:
-//             return state;
-//     }
-// }
 
 export default function reducer(
     state = defaultState ,
@@ -43,21 +32,6 @@ export default function reducer(
 
                  }  
                
-
-
-
-
-
-                // case 'SET_USER_DETAILS':
-                //     return{
-                //         ...state,
-                //         userdetails: {
-                //              fname:payload,
-                //             //  .split('@')[0],
-                           
-                //         },
-                        
-                //     }
 
         }
         return state

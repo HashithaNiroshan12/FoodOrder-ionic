@@ -1,7 +1,8 @@
 import { IonBackButton, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRow, IonSegment, IonSegmentButton, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar, } from '@ionic/react';
-import { calendar, call, cardOutline, checkmarkCircleOutline, heart, informationCircle, locationOutline, map, personCircle, pin } from 'ionicons/icons';
+import { calendar, call, cardOutline, checkmarkCircleOutline, checkmarkDoneSharp, heart, informationCircle, locationOutline, map, personCircle, pin } from 'ionicons/icons';
 import React, { useState } from 'react';
-import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
+
 import { db } from '../firebaseConfig';
 
 import '../theme/order.css'
@@ -14,11 +15,15 @@ const Order: React.FC = () => {
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [zip, setZip] = useState("");
+    const [tele, setTele] = useState("");
 
+    const history = useHistory()
   async function Submit(e:any)  {
     e.preventDefault();
 
-    if(fullname == '' || address == '' || city == '' || zip == '' )
+   
+
+    if(fullname == '' || address == '' || city == '' || zip == '' || tele == '' )
      {      
       return toast('Fields are required');
      }
@@ -31,17 +36,20 @@ const Order: React.FC = () => {
       zip:zip
     })
     .then(() => {
-      alert("Submit Successfully");
-     
+      alert("Shipping added Successfully");
+      history.replace('/payment')
+ 
     })
     .catch((error) => {
       alert(error.message);
     });
    
+    
     setFullname("")
     setAddress("")
     setCity("")
     setZip("")
+    setTele("")
   };
 
   
@@ -50,11 +58,11 @@ const Order: React.FC = () => {
     <IonPage>
         
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
         <IonButtons slot="start">
               <IonBackButton defaultHref="/cart"/>
             </IonButtons>
-          <IonTitle className="ion-text-center">CHECKOUT</IonTitle>
+          <IonTitle className="ion-text-center"><b>CHECKOUT</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
@@ -96,7 +104,12 @@ const Order: React.FC = () => {
             <IonItem> 
               <IonLabel position="stacked">City</IonLabel>
               <IonInput className="text-input" type="text" value={city} onIonChange={(e:any) => setCity(e.target.value)}></IonInput> 
-            </IonItem>   
+            </IonItem> 
+
+            <IonItem> 
+              <IonLabel position="stacked">Contact Number </IonLabel>
+              <IonInput className="text-input" type="tel" value={tele} onIonChange={(e:any) => setTele(e.target.value)}></IonInput> 
+            </IonItem>  
 
             <IonItem  lines="full"> 
               <IonLabel position="stacked">ZIP</IonLabel>

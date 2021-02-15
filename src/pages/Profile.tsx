@@ -1,10 +1,11 @@
-import { IonAvatar, IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonHeader, IonInput, IonItem,  IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonTextarea, IonTitle, IonToolbar } from '@ionic/react';
+import { IonAvatar, IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonHeader, IonImg, IonInput, IonItem,  IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonTextarea, IonTitle, IonToolbar } from '@ionic/react';
 // import { db } from '../firebaseConfig';
 import React, {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import {db, getCurrentUser } from '../firebaseConfig';
 
+import '../theme/profile.css';
 
 
 
@@ -41,15 +42,16 @@ const Profile: React.FC = () => {
    })
  }, )
 
+ 
 
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
         <IonButtons slot="start">
            <IonBackButton defaultHref="/menu"/>
          </IonButtons>
-          <IonTitle>Profile</IonTitle>
+          <IonTitle><b>PROFILE</b></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" >
@@ -59,6 +61,14 @@ const Profile: React.FC = () => {
           {users.map((entry) =>(
           <IonList key={entry.id}>
           <IonItem lines="inset" >
+
+           <IonAvatar slot="end">
+            <IonImg src="../../assets/images/profile/profile.jpg"></IonImg>
+           </IonAvatar>
+             <br /><br />
+
+        {/* <input type="file"></input> */}
+
        <IonLabel position="stacked">First Name</IonLabel>
        <IonInput id="fname" type="text" name="fname"    
         value={fname}
@@ -68,7 +78,7 @@ const Profile: React.FC = () => {
    
           
     <IonItem lines="inset" >
-       <IonLabel position="stacked">Last Name</IonLabel>
+       <IonLabel position="stacked"><b>Last Name</b></IonLabel>
        <IonInput id="lname" type="text" name="lname"
        value={lname}
        onIonChange={(e:any) => setLname(e.target.value)}           
@@ -99,11 +109,11 @@ const Profile: React.FC = () => {
 
     
 
-  <IonRow>
+  {/* <IonRow>
     <IonCol>
        <IonButton color="danger" expand="full" type="submit" >UPDATE</IonButton>
     </IonCol>
-  </IonRow>
+  </IonRow> */}
 
 
        </IonList>

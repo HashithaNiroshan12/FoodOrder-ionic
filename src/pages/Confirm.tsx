@@ -1,5 +1,5 @@
 import { IonBackButton, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRow, IonSegment, IonSegmentButton, IonTabBar, IonTabButton, IonTabs, IonText, IonTitle, IonToolbar, } from '@ionic/react';
-import { calendar, call, cardOutline, checkmarkCircleOutline, heart, informationCircle, locationOutline, map, personCircle, pin } from 'ionicons/icons';
+import { calendar, call, cardOutline, checkmarkCircleOutline, checkmarkDoneSharp, heart, informationCircle, locationOutline, map, personCircle, pin } from 'ionicons/icons';
 import React, { useEffect, useState } from 'react';
 
 import '../theme/confirm.css'
@@ -29,9 +29,9 @@ const Confirm: React.FC = () => {
     <IonPage>
         
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
         
-          <IonTitle className="ion-text-center">CONFIRM</IonTitle>
+          <IonTitle className="ion-text-center"><b>CONFIRM</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
@@ -41,17 +41,17 @@ const Confirm: React.FC = () => {
 
        <IonTabBar >
            
-                <IonTabButton  tab="currentorder" href="/order">
+                <IonTabButton  tab="currentorder" href="/confirm"><IonBadge color="success" ><IonIcon icon={checkmarkDoneSharp} /></IonBadge>
                   <IonIcon icon={locationOutline} /> 
                   <IonLabel >SHIPPING</IonLabel>
                 </IonTabButton>       
              
-                <IonTabButton  tab="payment" href="/payment">
+                <IonTabButton  tab="payment" href="/confirm"><IonBadge color="success" ><IonIcon icon={checkmarkDoneSharp} /></IonBadge>
                   <IonIcon icon={cardOutline} /> 
                   <IonLabel>PAYMENT</IonLabel>
                 </IonTabButton>
 
-                <IonTabButton  tab="confirm" href="/confirm">
+                <IonTabButton  tab="confirm" href="/confirm"><IonBadge color="success" ><IonIcon icon={checkmarkDoneSharp} /></IonBadge>
                   <IonIcon icon={checkmarkCircleOutline} />
                   <IonLabel>CONFIRM</IonLabel>
                 </IonTabButton>
@@ -59,7 +59,7 @@ const Confirm: React.FC = () => {
            </IonTabBar>  
     <IonContent  >
     <IonItem  lines="none" className="confirm-text">
-          <IonLabel>Thank you,{username}!</IonLabel>       
+          <IonLabel>Thank you,<IonText className="username">{username}</IonText>!</IonLabel>       
         </IonItem>
       
       <IonItem lines="none" className="ion-text-center">
@@ -75,7 +75,7 @@ const Confirm: React.FC = () => {
         <IonCardContent>
           <IonItem lines="full">
             <IonText>1 item shipping to:</IonText>
-            <IonText color="medium" slot="end">(free)</IonText>
+            <IonText color="tertiary" slot="end">(free)</IonText>
           </IonItem>
           <IonItem>
           <IonLabel>
@@ -96,7 +96,7 @@ const Confirm: React.FC = () => {
     </IonContent>
 
     <IonButton routerLink="/menu" className="btn1" color="warning">
-      <IonLabel >Keep Shopping</IonLabel>
+      <IonLabel ><b>Keep Shopping</b></IonLabel>
     </IonButton>
     
    

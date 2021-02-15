@@ -80,6 +80,7 @@ export async function  registerUser(fname:string , lname:string , tele:string ,a
 }
 
 export async function  forgetUser(username:string){
+    
     const email = `${username}`
     try{
        const res = await firebase.auth().sendPasswordResetEmail(email)

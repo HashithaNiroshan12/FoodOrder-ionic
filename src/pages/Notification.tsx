@@ -1,4 +1,4 @@
-import {  IonBackButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonItem, IonLabel, IonMenuToggle, IonPage, IonRouterOutlet, IonRow, IonTitle, IonToolbar, } from '@ionic/react';
+import {  IonBackButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonImg, IonItem, IonLabel, IonMenuToggle, IonPage, IonRouterOutlet, IonRow, IonTitle, IonToolbar, } from '@ionic/react';
 import { Spellcheck } from '@material-ui/icons';
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebaseConfig';
@@ -26,9 +26,14 @@ const Notification: React.FC = () => {
 
       <IonContent className="scroll-content" > 
         <IonCard>
-        <IonCardSubtitle color="dark" >New Choice</IonCardSubtitle>
+        {/* <IonCardSubtitle >New Choice</IonCardSubtitle> */}
+        <h4 style={{fontWeight:800}}>New Choice</h4>
         <br />
-          <img src="../assets/images/nasigoreng.jpg" />
+        <IonItem>
+        <IonLabel><IonImg src="../assets/images/nasigoreng.jpg" style={{width:200,height:200}}></IonImg></IonLabel>
+        </IonItem>
+          
+          {/* <img src="../assets/images/nasigoreng.jpg" /> */}
           <IonCardHeader>
             
             <IonCardTitle color="warning">Nasi goreng Available soon</IonCardTitle>

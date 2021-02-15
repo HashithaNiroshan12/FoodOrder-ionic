@@ -15,6 +15,18 @@ const SideMenu: React.FC = () => {
    const username = useSelector((state:any) => state.user.username)
    const history = useHistory()
     const location = useLocation();
+
+    // const [editImg, setEditImg] = useState<any>(false);
+
+    // const handlefilechange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //   if (event.target.files.length > 0) {
+    //     const file = event.target.files.item(0);
+    //     const PictureUrl = URL.createObjectURL(file);
+    //     // setPictureUrl(PictureUrl);
+    //     setEditImg(true);
+    //     // setlabelImg(false);
+    //   }
+    // };
  
    async function logout() {
      setBusy(true)
@@ -24,17 +36,17 @@ const SideMenu: React.FC = () => {
     }
   return (
     <IonMenu menuId="mainmenu" contentId="main"  className="md">
-      <IonContent>
+      <IonContent color="secondary">
           <IonLoading message="Logging out.." duration={0} isOpen={busy} />
 
           <IonList id="inbox-list">
           
              <IonItem lines="inset">
-             <IonAvatar>
-               <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-             </IonAvatar>
+             <IonAvatar slot="end">
+            <IonImg src="../../assets/images/profile/profile.jpg"></IonImg>
+           </IonAvatar>
               <IonLabel >
-               {username}
+              <b>{username}</b> 
               </IonLabel>
              
              </IonItem>
@@ -75,7 +87,7 @@ const SideMenu: React.FC = () => {
           <IonLabel >Profile</IonLabel>
         </IonItem>
       
-        <IonButton color="light" onClick={logout}><IonLabel color="danger">Logout</IonLabel><IonIcon slot="end"  icon={logOutOutline} /></IonButton>
+        <IonButton color="danger" onClick={logout}><IonLabel >Logout</IonLabel><IonIcon slot="end"  icon={logOutOutline} /></IonButton>
         </IonMenuToggle>
         </IonList>
        

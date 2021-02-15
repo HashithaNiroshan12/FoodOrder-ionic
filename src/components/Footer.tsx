@@ -36,19 +36,19 @@ const Footer: React.FC<ContainerProps> = () => {
 
           <IonTabBar color="warning"> 
           
-              <IonTabButton tab="Menu" href="/menu">
-                <IonIcon icon={restaurant} />
-                <IonLabel>Menu</IonLabel>
+              <IonTabButton  tab="Menu" href="/menu">
+                <IonIcon color="dark" icon={restaurant} />
+                <IonLabel color="dark">Menu</IonLabel>
               </IonTabButton>
               <IonTabButton tab="Contact" href="/contact">
-                <IonIcon icon={reader} />
-                <IonLabel>Contact</IonLabel>
+                <IonIcon color="dark" icon={reader} />
+                <IonLabel color="dark">Contact</IonLabel>
               </IonTabButton>
 
               {/* {cart.map((cart) => ( */}
                  <IonTabButton /*key={cart.id}*/ tab="Cart" href="/cart">
-                 <IonIcon icon={cartSharp} />
-                 <IonLabel>Cart</IonLabel>
+                 <IonIcon color="dark" icon={cartSharp} />
+                 <IonLabel color="dark">Cart</IonLabel>
               <IonBadge color="primary"><b>{cart.length}</b></IonBadge>
                </IonTabButton>
 

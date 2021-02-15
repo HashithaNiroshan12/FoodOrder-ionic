@@ -1,4 +1,4 @@
-.visa{
+/* .visa{
     
     font-family: myraid;
     
@@ -8,4 +8,9 @@
     
     background-color: #7977df;
 }
+ */
 
+ .cash{
+     font-size: 10px;
+     font-weight: 800;
+ }

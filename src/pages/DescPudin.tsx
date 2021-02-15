@@ -54,11 +54,11 @@ const DescPudin: React.FC = () => {
     <IonPage >
         
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-          <IonTitle>Description</IonTitle>
+          <IonTitle><b>DESCRIPTION</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>

@@ -1,4 +1,4 @@
-import { IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRouterOutlet, IonRow, IonSegment, IonSegmentButton, IonTabBar, IonTabButton, IonText, IonThumbnail, IonTitle, IonToolbar, } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRouterOutlet, IonRow, IonSegment, IonSegmentButton, IonTabBar, IonTabButton, IonText, IonThumbnail, IonTitle, IonToolbar, } from '@ionic/react';
 import { AddCircleOutline, CakeTwoTone } from '@material-ui/icons';
 import { auth } from 'firebase';
 import { addCircle, addCircleOutline, addCircleSharp, arrowForward, removeCircleOutline, removeCircleSharp } from 'ionicons/icons';
@@ -9,39 +9,18 @@ import { db } from '../firebaseConfig';
 
 // import './login.css';
 import '../theme/cart.css';
-
-
-//  type Description = {
-//  id:string;
-//   title:string,
-//   price:string,
-//   url: string;
-//   text: string;
-//   qty:string;
-//   type:string;
-// };
-
-// const items :Description[] = [
-//   {
-//     id:'1',
-//     title:'BROWN BASMATHI RICE',
-//     price:'Rs.300.00',
-//     url:'../../assets/images/rice/brownbasmathi.jpg',
-//     text:' Vegetable Chopsuey, Chutney, Omelet,Chilli Paste,Green Peas',
-//     qty:'3',
-//     type:'full'
-//   },
-  
- 
-
-// ];
-
-
+import { toast } from '../toast';
 
 
 const Cart: React.FC = () => {
   const[cart, setCart]=useState<any[]>([]) 
   const[total, setTotal]=useState<any[]>([]) 
+
+  const[title, setTitle] =useState();
+  const[price, setPrice] =useState<any[number]>([]);
+  const[url,setUrl] = useState("");
+  const[qty, setQty] = useState<any[number]>([]);
+
   //const[price, setPrice] =useState<any[number]>([]);
 
 //  function addNumbers(price:number){
@@ -70,6 +49,8 @@ const Cart: React.FC = () => {
 
   }, [])
 
+  
+
   useEffect(() => { 
     const ref = db.collection("total");
 
@@ -83,52 +64,59 @@ const Cart: React.FC = () => {
 
   }, [])
 
+  async function order(e:any){
+    e.preventDefault();
+    toast('Succefully Ordered your Food Item',5000)
+
+  }
+
   async function remove(){
     
-     db.collection('cart').doc("basmathi rice").delete(); 
-     db.collection('cart').doc("garlic rice").delete(); 
-     db.collection('cart').doc("threelayered rice").delete(); 
+     db.doc("/cart/#BR120").delete();      //rice
+     db.doc("cart/#GR121").delete(); 
+     db.collection('cart').doc("#TR122").delete(); 
       
-     db.collection('cart').doc("chicken kottu").delete(); 
-     db.collection('cart').doc("vegekottu").delete(); 
-     db.collection('cart').doc("cheese kottu").delete();
+     db.collection('cart').doc("#CK200").delete(); //kottu
+     db.collection('cart').doc("#VK201").delete(); 
+     db.collection('cart').doc("#CKK202 ").delete();
       
-     db.collection('cart').doc("elawaluroti").delete();
-     db.collection('cart').doc("malupan").delete();
-     db.collection('cart').doc("pattis").delete();
-       db.collection('cart').doc("rolls").delete();
-       db.collection('cart').doc("samosa").delete();
+     db.collection('cart').doc("#SE100").delete();    //shortearts
+     db.collection('cart').doc("#SM101").delete();
+     db.collection('cart').doc("#SP102").delete();
+       db.collection('cart').doc("#SR103").delete();
+       db.collection('cart').doc("#SS104").delete();
       
-       db.collection('cart').doc("caremal").delete();
-       db.collection('cart').doc("chocolate cake").delete();      
+       db.doc("cart/#DC320").delete();       //dessert
+       db.collection('cart').doc("#DCC321").delete();      
     
      
    }
+   
   
   return (
     
     <IonPage>
         
       <IonHeader >
-        <IonToolbar>
+        <IonToolbar color="light">
         <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-          <IonTitle >Cart</IonTitle>
+          <IonTitle ><b>CART</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
         </IonToolbar>
 
          {/* <IonToolbar>  */}
-           <IonTabBar >
+           <IonTabBar color="medium">
            
                 <IonTabButton  tab="currentorder" href="/cart">
-                  <IonLabel >CURRENT ORDER</IonLabel>
+                  <IonLabel ><b>CURRENT ORDER</b></IonLabel>
                 </IonTabButton>       
              
                 <IonTabButton  tab="orderHistory" href="/orderHistory">
-                  <IonLabel>ORDER HISTORY</IonLabel>
+                  <IonLabel><b>ORDER HISTORY</b></IonLabel>
                 </IonTabButton>
              
            </IonTabBar>  
@@ -142,16 +130,15 @@ const Cart: React.FC = () => {
          <IonCol >
          {cart.map((cart) => (
         
-        
-       
-         <IonCard  key={cart.id} >
+         <IonCard color="secondary" key={cart.id} >
            
         <IonList mode="md">                 
            <IonItem>
               <IonThumbnail slot="start">
                   <IonImg src={cart.url}/>                 
               </IonThumbnail>
-              <IonLabel className="totalPrice">{cart.title}</IonLabel>                      
+              <IonLabel className="totalPrice">{cart.title}
+               </IonLabel>                      
            </IonItem>
            <IonItem>                     
                 <IonLabel className="quanty" slot="start" color="warning">Quantity: {cart.qty} </IonLabel>
@@ -176,10 +163,10 @@ const Cart: React.FC = () => {
                   <IonIcon icon={removeCircleSharp} />
                     Remove
                 </IonButton>
-                <IonButton slot="end" color="success"> 
+                {/* <IonButton onClick={order} slot="end" color="success"> 
                   <IonIcon icon={addCircleSharp} />
                     Order
-                </IonButton>
+                </IonButton> */}
             </IonItem>
         </IonCard>
 
@@ -190,21 +177,24 @@ const Cart: React.FC = () => {
            
        </IonCol>
      </IonRow>
-      ): (<b><p style={{textAlign:'center',fontWeight:500}}>{errMsg}</p></b>)}
+      ): (<b><p style={{textAlign:'center',fontWeight:700}}>{errMsg}</p></b>)}
      
    
       </IonContent> 
-      <IonCard className="total" >    
+      {cart.length>0 ? (
+        <IonCard className="total" >    
             <IonCardContent>         
                 
                <IonItem color="lightcyan" lines="none">
-                 <IonButton  slot="end" color="danger" routerLink="/order">
+                 <IonButton  slot="end" color="danger"  routerLink="/order">
                    Checkout
                    <IonIcon icon={arrowForward} />
                  </IonButton>
                </IonItem>
             </IonCardContent>
         </IonCard> 
+      ): (<b><p style={{textAlign:'center',fontWeight:500}}>{toast}</p></b>)}
+      
 
       {/* {total.map((total) => (
            <IonCard className="total" >    

@@ -30,7 +30,7 @@ const DescCaremal: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("caremal").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#DC320").set({          //.doc("basmathi rice").
     type:type,   
     title:'CAREMAL',
     price:'160.00',
@@ -76,11 +76,11 @@ useEffect(() => {
     <IonPage >
         
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-          <IonTitle>Description</IonTitle>
+          <IonTitle><b>DESCRIPTION</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
@@ -91,8 +91,8 @@ useEffect(() => {
         {desrice.map((menu,id)=> (
           <IonRow key={id}>
           <IonCol  >
-          <IonCard >
-           <IonItem lines="inset">
+          <IonCard color="medium">
+           <IonItem color="medium" lines="full">
              <IonCardHeader  ><b>{menu.title }</b></IonCardHeader>
              
              <IonButton  color="danger" fill="outline" slot="end" disabled>
@@ -101,7 +101,7 @@ useEffect(() => {
              </IonButton>
            </IonItem>
        
-          <IonItem>         
+          <IonItem color="medium" lines="full">         
             <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
           </IonItem>
           
@@ -117,20 +117,20 @@ useEffect(() => {
              
         </IonCard>
 
-        <IonCard>   
+        <IonCard >  
+          {/* <IonCardContent > */}
           <IonRow>
-            <IonCol>
-       
+            <IonCol>       
             <IonItem lines="none">
-              <IonLabel slot="end">Select a Type</IonLabel>
+              <IonLabel >Select a Type</IonLabel>
                  <IonSelect  slot="end" value={type} onIonChange={(e:any) => setType(e.detail.value)}>
                    <IonSelectOption >Chocolate</IonSelectOption>
                    <IonSelectOption >sauce</IonSelectOption>
-                   <IonSelectOption >popcorn</IonSelectOption>
-            
+                   <IonSelectOption >popcorn</IonSelectOption>            
                  </IonSelect>
-               </IonItem>
+              </IonItem>
             </IonCol>
+
             <IonItem lines="none">
                 <IonLabel slot="end">Quantity</IonLabel>
                 <IonInput slot="end" placeholder="Enter Qty" value={qty}
@@ -144,13 +144,13 @@ useEffect(() => {
             <IonItem lines="none">
               <IonLabel><IonIcon icon={bicycleSharp} />Arriving Time: <IonInput type="time" value={time} onIonChange={(e:any) => setTime(e.detail.value)} />  </IonLabel>
             </IonItem>
-            
-
+           
             <IonCol>                   
              
             </IonCol>
           </IonRow>                      
            
+          {/* </IonCardContent>            */}
         </IonCard>
   
 
@@ -170,8 +170,6 @@ useEffect(() => {
          <IonInput  value={price} onIonChange={(e:any) => setPrice(e.detail.value)}> </IonInput> 
          
       </IonContent>
-
-      {/* footer */}
 
       <Footer/>
     </IonPage>

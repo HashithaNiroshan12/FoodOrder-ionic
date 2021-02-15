@@ -62,17 +62,17 @@ const Register: React.FC = () => {
   return (
     <IonPage>
       <IonHeader >
-       <IonToolbar>
+       <IonToolbar color="medium">
          <IonButtons slot="start">
            <IonBackButton defaultHref="/home"/>
          </IonButtons>
          
-         <IonTitle>Register</IonTitle>
+         <IonTitle><b>REGISTER</b></IonTitle>
        </IonToolbar>
       </IonHeader>
       
       
-      <IonContent >
+      <IonContent color="medium">
       <IonLoading message="Registration in progress.." duration={0} isOpen={busy} />
        <IonRow>
         <IonCol >

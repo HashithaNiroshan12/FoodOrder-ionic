@@ -12,7 +12,7 @@ const Forget: React.FC = () => {
     const res = await forgetUser(username)
    
     if(res){
-      toast('You have succedd!')
+      toast('You have succeded!')
     }
 
     setUsername("");
@@ -21,11 +21,11 @@ const Forget: React.FC = () => {
   return (
     <IonPage>
        <IonHeader>
-         <IonToolbar>
-                  <IonButtons slot="start">
-                      <IonBackButton defaultHref="/login"/>
+         <IonToolbar color="secondary">
+                  <IonButtons  slot="start">
+                      <IonBackButton color="dark" defaultHref="/login"/>
                   </IonButtons>
-                  <IonTitle>Reset Your Password</IonTitle>
+                  <IonTitle color="dark"><b>RESET YOUR PASSWORD</b></IonTitle>
               </IonToolbar>
       </IonHeader> 
       <IonContent fullscreen>

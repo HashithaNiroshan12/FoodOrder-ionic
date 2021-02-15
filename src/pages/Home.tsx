@@ -13,9 +13,9 @@ const Home: React.FC = () => {
         
             <IonLabel className="l1">Order Your Favorite Food Online</IonLabel>
             <section >
-              <h1 style={{textAlign:"center"}}>WELCOME</h1> 
-             <IonButton routerLink="/register"  color="success" expand="block" >Sign Up</IonButton>
-             <IonButton  routerLink="/login" className="btn2" color="medium" expand="block">Sign In</IonButton>
+              <h1 style={{textAlign:"center",fontWeight:800}}>WELCOME</h1> 
+             <IonButton routerLink="/register"  color="success" expand="block" ><b>Sign Up</b></IonButton>
+             <IonButton  routerLink="/login" className="btn2" color="medium" expand="block"><b>Sign In</b></IonButton>
             </section>
           
       </IonContent>

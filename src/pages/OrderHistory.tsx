@@ -2,39 +2,71 @@ import { IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCol, 
 import { CardTravel, LocalShippingSharp } from '@material-ui/icons';
 
 import {  addCircleOutline, addCircleSharp, arrowForward, locationOutline, removeCircleOutline, removeCircleSharp } from 'ionicons/icons';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Footer from '../components/Footer';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 
 import '../theme/orderhistory.css';
+import { db } from '../firebaseConfig';
 
 
 
 const OrderHistory: React.FC = () => {
+
+  const[order, setOrder]=useState<any[]>([])
+  
+  const[order1, setOrder1]=useState<any[]>([])
+  
+  useEffect(() => { 
+    const ref = db.collection("order");
+
+    ref.get().then((snapshot:any) => {
+      const order = snapshot.docs.map((doc:any) => ({
+        id:doc.id,
+        ...doc.data(),
+      }));
+      setOrder(order);
+    })
+
+  }, [])
+
+  useEffect(() => { 
+    const ref1 = db.collection("orders").doc('ws43EQ9tA5MDzsf23j1Z').collection('shipping').limit(1);
+
+    ref1.get().then((snapshot:any) => {
+      const order1 = snapshot.docs.map((doc:any) => ({
+        id:doc.id,
+        ...doc.data(),
+      }));
+      setOrder1(order1);
+    })
+
+  }, [])
+
   return (
     <IonPage>
         
       <IonHeader >
-        <IonToolbar>
+        <IonToolbar color="light">
         <IonButtons slot="start">
-              <IonBackButton defaultHref="/customize"/>
+              <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-          <IonTitle >Cart</IonTitle>
+          <IonTitle ><b>CART</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
         </IonToolbar>
 
          {/* <IonToolbar>  */}
-           <IonTabBar >
+           <IonTabBar color="medium" >
            
                 <IonTabButton  tab="currentorder" href="/cart">
-                  <IonLabel >CURRENT ORDER</IonLabel>
+                  <IonLabel ><b>CURRENT ORDER</b></IonLabel>
                 </IonTabButton>       
              
                 <IonTabButton  tab="orderHistory" href="/orderHistory">
-                  <IonLabel>ORDER HISTORY</IonLabel>
+                  <IonLabel><b>ORDER HISTORY</b></IonLabel>
                 </IonTabButton>
              
            </IonTabBar>  
@@ -43,11 +75,13 @@ const OrderHistory: React.FC = () => {
       </IonHeader>
 
       <IonContent className="scroll-content ion-padding" >
-          <IonCard>
+      {order.map((order,id) => (
+          <IonCard key={id}>
             <IonCardContent className="ion-padding">
+              
               <IonItem lines="none">
-                <IonLabel slot="start" color="danger">Order #21412</IonLabel>
-                <IonLabel className="tot">Feb 16,2020</IonLabel><br />
+                <IonLabel slot="start" color="danger">{order.id}</IonLabel>             
+                <IonLabel className="tot">{order.date}</IonLabel><br />
               </IonItem>
 
               <IonItem lines="none">
@@ -57,29 +91,32 @@ const OrderHistory: React.FC = () => {
                 </IonLabel> 
               </IonItem>
 
-              <IonItem className="item1" lines="full">
-                <IonLabel className="f1">Brownbasmathi</IonLabel>
-                <IonLabel className="tot"> 20 qty</IonLabel>
-                <IonLabel >Rs.300.00(1)</IonLabel>
-              </IonItem >
-
-
-              <IonItem  lines="full">
-                <IonIcon icon={locationOutline} />
-                   <IonLabel className="location">Athiliwew,Monaragala</IonLabel>               
-              </IonItem>
-
+              
+                <IonItem className="item1" lines="full">
+                  <IonLabel slot="start" className="f1">{order.title}</IonLabel>
+                  <IonLabel  className="tot"> {order.qty} qty</IonLabel>
+                  <IonLabel >Rs.{order.price}(1)</IonLabel>
+                </IonItem >
+               
               <IonItem>
-                <IonLabel className="Total"> Total</IonLabel>
-                <IonLabel className="f1"> Rs.6000.00</IonLabel>
+                <IonLabel className="Total"> Total Price</IonLabel>
+                <IonLabel className="f1"> Rs.{order.total}.00</IonLabel>
               </IonItem>
-            
+            {order1.map((order1,id) => ( 
+                 <IonItem key={id} lines="full">
+                  <IonIcon icon={locationOutline} />
+                  <IonLabel className="location">{order1.city}</IonLabel>               
+                 </IonItem>
+               ))} 
+              
             
               
             </IonCardContent>
           </IonCard>
-      </IonContent>
+      ))}
+       
 
+      </IonContent>
 
       
          

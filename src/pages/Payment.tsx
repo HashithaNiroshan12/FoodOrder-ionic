@@ -1,6 +1,7 @@
 import { IonBackButton, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRow, IonSegment, IonSegmentButton, IonSelect, IonSelectOption, IonTabBar, IonTabButton, IonTabs, IonText, IonTitle, IonToolbar, } from '@ionic/react';
-import { calendar, call, cardOutline, checkmarkCircleOutline, heart, informationCircle, locationOutline, map, personCircle, pin } from 'ionicons/icons';
+import { calendar, call, cardOutline, checkmarkCircleOutline, checkmarkDoneSharp, heart, informationCircle, locationOutline, map, personCircle, pin } from 'ionicons/icons';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { db } from '../firebaseConfig';
 
 import '../theme/payment.css'
@@ -10,6 +11,7 @@ import { toast } from '../toast';
 
 const Payment: React.FC = () => {
 
+  const history = useHistory()
   const [payment, setPayment] = useState("");
   async function Submit(e:any)  {
     e.preventDefault();
@@ -23,8 +25,8 @@ const Payment: React.FC = () => {
       payment:payment
     })
     .then(() => {
-      alert("Submit Successfully");
-      // window.history.replaceState({}, '','./payment', )
+      alert("Payment confirmed Successfully");
+      history.replace('/confirm') 
     })
     .catch((error) => {
       alert(error.message);
@@ -37,9 +39,9 @@ const Payment: React.FC = () => {
     <IonPage>
         
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
         
-          <IonTitle className="ion-text-center">PAYMENT</IonTitle>
+          <IonTitle className="ion-text-center"><b>PAYMENT</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
@@ -48,7 +50,7 @@ const Payment: React.FC = () => {
 
        <IonTabBar >
            
-                <IonTabButton  tab="currentorder" href="/order">
+                <IonTabButton  tab="currentorder" href="/order"> <IonBadge color="success" ><IonIcon icon={checkmarkDoneSharp} /></IonBadge>
                   <IonIcon icon={locationOutline} />
                   <IonLabel >SHIPPING</IonLabel>
                 </IonTabButton>       
@@ -58,7 +60,7 @@ const Payment: React.FC = () => {
                   <IonLabel>PAYMENT</IonLabel>
                 </IonTabButton>
 
-                <IonTabButton  tab="confirm" href="/confirm">
+                <IonTabButton  tab="confirm" href="/payment">
                   <IonIcon icon={checkmarkCircleOutline} /> 
                   <IonLabel>CONFIRM</IonLabel>
                 </IonTabButton>
@@ -69,17 +71,17 @@ const Payment: React.FC = () => {
           <IonLabel>PAYING WITH</IonLabel>
         </IonItem>
        
-        <IonItem lines="inset">
-          <IonLabel color="medium">PAYEMENT METHOD</IonLabel>
-           <IonSelect   value={payment} onIonChange={(e:any) => setPayment(e.target.value)}>
+        <IonItem className="cash" lines="inset">
+          <IonLabel color="dark">PAYMENT METHOD</IonLabel>
+           <IonSelect className="cash"  value={payment} onIonChange={(e:any) => setPayment(e.target.value)}>
             {/* <IonSelectOption value="visa">VISA</IonSelectOption> */}
-            <IonSelectOption value="cash">CASH ON DELIVERY</IonSelectOption>
+            <IonSelectOption className="cash" value="cash">CASH ON DELIVERY</IonSelectOption>
           </IonSelect>
         </IonItem>
     </IonContent>
  
       
-       <IonButton onClick={Submit} routerLink="/confirm" className="payment-info">CONFIRM PAYMENT</IonButton>
+       <IonButton onClick={Submit}  className="payment-info">CONFIRM PAYMENT</IonButton>
     
     </IonPage>
   );

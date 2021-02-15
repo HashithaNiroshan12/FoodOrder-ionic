@@ -54,11 +54,11 @@ const Menurice: React.FC = () => {
   return (
     <IonPage>
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color="light">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-            <IonTitle>Rice</IonTitle>
+            <IonTitle><b>RICE</b></IonTitle>
             <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>

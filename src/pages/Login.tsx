@@ -33,15 +33,15 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="medium">
         <IonButtons slot="start">
            <IonBackButton defaultHref="/home"/>
          </IonButtons>
-          <IonTitle>Login</IonTitle>
+          <IonTitle><b>LOGIN</b></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonLoading message="Please wait.." duration={0} isOpen={busy} />
-      <IonContent >
+      <IonContent color="medium">
         <IonRow>
            <IonCol>
              <IonCard  color="dark">

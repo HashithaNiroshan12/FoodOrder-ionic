@@ -32,7 +32,7 @@ const DescChoclate: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("chocolate cake").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#DCC321").set({          //.doc("basmathi rice").
     type:type,   
     title:'CHOCOLATE CAKE',
     price:'200.00',
@@ -78,11 +78,11 @@ const DescChoclate: React.FC = () => {
     <IonPage >
         
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-          <IonTitle>Description</IonTitle>
+          <IonTitle><b>DESCRIPTION</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
@@ -93,8 +93,8 @@ const DescChoclate: React.FC = () => {
         {desrice.map((menu,id)=> (
           <IonRow key={id}>
           <IonCol  >
-          <IonCard >
-           <IonItem lines="inset">
+          <IonCard color="medium">
+           <IonItem color="medium" lines="full">
              <IonCardHeader  ><b>{menu.title }</b></IonCardHeader>
              
              <IonButton  color="danger" fill="outline" slot="end" disabled>
@@ -103,7 +103,7 @@ const DescChoclate: React.FC = () => {
              </IonButton>
            </IonItem>
        
-          <IonItem>         
+          <IonItem color="medium" lines="full">         
             <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
           </IonItem>
           
@@ -119,22 +119,21 @@ const DescChoclate: React.FC = () => {
              
         </IonCard>
 
-        <IonCard>   
+        <IonCard >  
+          {/* <IonCardContent > */}
           <IonRow>
-            <IonCol>
-       
-        <IonItem lines="none">
-            <IonLabel slot="end">Select a Type</IonLabel>
-          <IonSelect  slot="end"  value={type} onIonChange={(e:any) => setType(e.detail.value)}>
-            <IonSelectOption >Chocolate Truffle</IonSelectOption>
-            <IonSelectOption >Chocolate Rum</IonSelectOption>
-            <IonSelectOption >Chocolate Lava</IonSelectOption>
-            <IonSelectOption >Chocolate Fudge</IonSelectOption>
-            
-          </IonSelect>
-        </IonItem>
-
+            <IonCol>       
+            <IonItem lines="none">
+              <IonLabel >Select a Type</IonLabel>
+                 <IonSelect  slot="end"  value={type} onIonChange={(e:any) => setType(e.detail.value)}>
+                    <IonSelectOption >Chocolate Truffle</IonSelectOption>
+                    <IonSelectOption >Chocolate Rum</IonSelectOption>
+                    <IonSelectOption >Chocolate Lava</IonSelectOption>
+                    <IonSelectOption >Chocolate Fudge</IonSelectOption>            
+                 </IonSelect>
+            </IonItem>
             </IonCol>
+
             <IonItem lines="none">
                 <IonLabel slot="end">Quantity</IonLabel>
                 <IonInput slot="end" placeholder="Enter Qty" value={qty}
@@ -148,13 +147,13 @@ const DescChoclate: React.FC = () => {
             <IonItem lines="none">
               <IonLabel><IonIcon icon={bicycleSharp} />Arriving Time: <IonInput type="time" value={time} onIonChange={(e:any) => setTime(e.detail.value)} />  </IonLabel>
             </IonItem>
-            
-
+           
             <IonCol>                   
              
             </IonCol>
           </IonRow>                      
            
+          {/* </IonCardContent>            */}
         </IonCard>
   
 
@@ -174,7 +173,6 @@ const DescChoclate: React.FC = () => {
          <IonInput  value={price} onIonChange={(e:any) => setPrice(e.detail.value)}> </IonInput> 
          
       </IonContent>
-      {/* footer */}
 
       <Footer/>
     </IonPage>

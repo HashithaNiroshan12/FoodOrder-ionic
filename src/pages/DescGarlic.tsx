@@ -61,7 +61,7 @@ const DescGarlic: React.FC = () => {
       return toast('Fields are required');
      }
 
-  db.collection('cart').doc("garlic rice").set({         //doc("garlic rice").
+  db.collection('cart').doc("#GR121").set({         //doc("garlic rice").
     type:type,   
     title:'GARLIC RICE',
     price:'350.00',
@@ -101,93 +101,100 @@ const DescGarlic: React.FC = () => {
     <IonPage >
         
     <IonHeader>
-      <IonToolbar>
+      <IonToolbar color="light">
           <IonButtons slot="start">
             <IonBackButton defaultHref="/menu"/>
           </IonButtons>
-        <IonTitle>Description</IonTitle>
+        <IonTitle><b>DESCRIPTION</b></IonTitle>
         <IonButtons slot="end">
           <IonMenuButton />
         </IonButtons>
       </IonToolbar>
     </IonHeader>
+
     <IonContent>     
-      {desrice.map((menu,id)=> (
-        <IonRow key={id}>
-        <IonCol  >
-        <IonCard >
-         <IonItem lines="inset">
-           <IonCardHeader  ><b>{menu.title }</b></IonCardHeader>
-           
-           <IonButton  color="danger" fill="outline" slot="end" disabled>
-               Rs.{menu.price}
+        {desrice.map((menu,id)=> (
+          <IonRow key={id}>
+          <IonCol  >
+          <IonCard color="medium">
+           <IonItem color="medium" lines="full">
+             <IonCardHeader  ><b>{menu.title }</b></IonCardHeader>
              
-           </IonButton>
-         </IonItem>
-     
-        <IonItem>         
-          <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
-        </IonItem>
-        
-        <IonCardContent>
-          <IonLabel color="primary">Add On :</IonLabel>
-              {menu.add}  <br/>
-         <IonLabel color="primary">Serving Time:	</IonLabel>
-         <IonText>  11.00AM - 11.00PM</IonText>
-           <br />
-         <IonLabel color="primary">Delivery </IonLabel>
-         <IonText> Delivery Available.</IonText>
-        </IonCardContent>
-       
-      </IonCard>
-
-      <IonCard>   
-        <IonRow>
-          <IonCol>       
-          <IonItem lines="none">       
-             <IonLabel slot="end">Select a Type</IonLabel>                   
-               <IonSelect slot="end" value={type} onIonChange={(e:any) => setType(e.detail.value)}>
-                 <IonSelectOption value="0.5">half(0.5) </IonSelectOption> 
-                 <IonSelectOption value="1" >full(1)</IonSelectOption>
-             </IonSelect>
+             <IonButton  color="danger" fill="outline" slot="end" disabled>
+                 Rs.{menu.price}
+               
+             </IonButton>
            </IonItem>
-          </IonCol>
-          <IonItem lines="none">
-              <IonLabel slot="end">Quantity</IonLabel>
-              <IonInput slot="end" placeholder="Enter Qty" value={qty}
-            onIonChange={(e:any) => setQty(e.detail.value)} type="number"></IonInput>
+       
+          <IonItem color="medium" lines="full">         
+            <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
           </IonItem>
+          
+          <IonCardContent>
+            <IonLabel color="primary">Add On :</IonLabel>
+                {menu.add}  <br/>
+           <IonLabel color="primary">Serving Time:	</IonLabel>
+           <IonText>  11.00AM - 11.00PM</IonText>
+             <br />
+           <IonLabel color="primary">Delivery </IonLabel>
+           <IonText> Delivery Available.</IonText>
+          </IonCardContent>
+             
+        </IonCard>
 
-          <IonItem lines="none" >                       
+        <IonCard >  
+          {/* <IonCardContent > */}
+          <IonRow>
+            <IonCol>       
+            <IonItem lines="none">       
+               <IonLabel>Select a Type</IonLabel>                   
+                 <IonSelect slot="end" value={type} onIonChange={(e:any) => setType(e.detail.value)}>
+                   <IonSelectOption value="0.5">half(0.5) </IonSelectOption> 
+                   <IonSelectOption value="1" >full(1)</IonSelectOption>
+               </IonSelect>
+             </IonItem>
+            </IonCol>
+
+            <IonItem lines="none">
+                <IonLabel slot="end">Quantity</IonLabel>
+                <IonInput slot="end" placeholder="Enter Qty" value={qty}
+              onIonChange={(e:any) => setQty(e.detail.value)} type="number"></IonInput>
+            </IonItem>
+           
+            <IonItem lines="none" >                       
                <IonLabel><IonIcon icon={bicycleSharp} />Arriving Date: <IonInput type="date" value={date} onIonChange={(e:any) => setDate(e.detail.value)} /> </IonLabel>           
             </IonItem>  
             
             <IonItem lines="none">
               <IonLabel><IonIcon icon={bicycleSharp} />Arriving Time: <IonInput type="time" value={time} onIonChange={(e:any) => setTime(e.detail.value)} />  </IonLabel>
             </IonItem>
-
-          <IonCol>                   
            
-          </IonCol>
-        </IonRow>                      
-         
-      </IonCard>
+            <IonCol>                   
+             
+            </IonCol>
+          </IonRow>                      
+           
+          {/* </IonCardContent>            */}
+        </IonCard>
   
-      <IonItem lines="none">
-        <IonButton slot="end" /*routerLink="../cart"*/ className="cartBtn" 
-           onClick={submit} >Add to Cart</IonButton>
-      </IonItem>
-     
-      
-        </IonCol>
-      </IonRow>
 
-      ))}
-       <IonInput  value={title} onIonChange={(e:any) => setTitle(e.detail.value)} ></IonInput>
-       <IonInput  value={url} onIonChange={(e:any) => setUrl(e.detail.value)} ></IonInput>
-       <IonInput  value={total} onIonChange={(e:any) => setTotal(e.detail.value)}></IonInput>  
-       <IonInput  value={price} onIonChange={(e:any) => setPrice(e.detail.value)}> </IonInput> 
-    </IonContent>
+        <IonItem lines="none">
+          <IonButton slot="end" /*routerLink="../cart"*/ className="cartBtn" 
+             onClick={submit} >Add to Cart</IonButton>
+        </IonItem>
+       
+        
+          </IonCol>
+        </IonRow>
+
+        ))}
+         <IonInput  value={title} onIonChange={(e:any) => setTitle(e.detail.value)} ></IonInput>
+         <IonInput  value={url} onIonChange={(e:any) => setUrl(e.detail.value)} ></IonInput>
+         <IonInput  value={total} onIonChange={(e:any) => setTotal(e.detail.value)}></IonInput>  
+         <IonInput  value={price} onIonChange={(e:any) => setPrice(e.detail.value)}> </IonInput> 
+         
+      </IonContent>
+
 
     {/* footer */}
 

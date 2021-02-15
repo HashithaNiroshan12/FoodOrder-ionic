@@ -44,11 +44,11 @@ const Menukottu: React.FC = () => {
   return (
     <IonPage>
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color="light">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-            <IonTitle>KOTTU</IonTitle>
+            <IonTitle><b>KOTTU</b></IonTitle>
           </IonToolbar>
         </IonHeader>
 

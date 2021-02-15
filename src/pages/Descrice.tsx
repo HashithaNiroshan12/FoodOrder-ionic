@@ -15,28 +15,6 @@ import { toast } from '../toast';
 import { Redirect } from 'react-router';
 
 
-   
-//  type Description = {
-//   id:string,
-//   title:string,
-//   price:string,
-//   url: string;
-//   add: string;
-//   link:string;
-// };
-
-// const products  = [
-//   {
-  
-//     title:'BROWN BASMATHI RICE',
-//     price:300,
-//     url:{brownbasmathi},
-//     add:' Vegetable Chopsuey, Chutney, Omelet,Chilli Paste,Green Peas',
-//     link:'',
-//   },
- 
-
-// ];
 
 
 const Descrice: React.FC = () => {
@@ -63,7 +41,19 @@ const Descrice: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("basmathi rice").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#BR120").set({          //.doc("basmathi rice").
+    type:type,   
+    title:'BROWN BASMATHI RICE',
+    price:'300.00',
+    url:'../../assets/images/rice/brownbasmathi.jpg' ,
+    qty:qty,
+    total:300.00*qty*type,
+    time:time,
+    date:date
+    
+
+  })
+  db.collection('order').doc("#BR120").set({          //.doc("basmathi rice").
     type:type,   
     title:'BROWN BASMATHI RICE',
     price:'300.00',
@@ -122,11 +112,11 @@ const Descrice: React.FC = () => {
     <IonPage >
         
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-          <IonTitle>Description</IonTitle>
+          <IonTitle><b>DESCRIPTION</b></IonTitle>
           <IonButtons slot="end">
             <IonMenuButton />
           </IonButtons>
@@ -138,7 +128,7 @@ const Descrice: React.FC = () => {
           <IonRow key={id}>
           <IonCol  >
           <IonCard color="medium">
-           <IonItem color="medium" lines="inset">
+           <IonItem color="medium" lines="full">
              <IonCardHeader  ><b>{menu.title }</b></IonCardHeader>
              
              <IonButton  color="danger" fill="outline" slot="end" disabled>
@@ -147,7 +137,7 @@ const Descrice: React.FC = () => {
              </IonButton>
            </IonItem>
        
-          <IonItem color="medium">         
+          <IonItem lines="full" color="medium">         
             <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
           </IonItem>
           
@@ -164,10 +154,9 @@ const Descrice: React.FC = () => {
         </IonCard>
 
         <IonCard >  
-          <IonCardContent >
+          {/* <IonCardContent > */}
           <IonRow>
-            <IonCol>
-       
+            <IonCol>       
             <IonItem lines="none">       
                <IonLabel>Select a Type</IonLabel>                   
                  <IonSelect slot="end" value={type} onIonChange={(e:any) => setType(e.detail.value)}>
@@ -176,6 +165,7 @@ const Descrice: React.FC = () => {
                </IonSelect>
              </IonItem>
             </IonCol>
+
             <IonItem lines="none">
                 <IonLabel slot="end">Quantity</IonLabel>
                 <IonInput slot="end" placeholder="Enter Qty" value={qty}
@@ -195,7 +185,7 @@ const Descrice: React.FC = () => {
             </IonCol>
           </IonRow>                      
            
-          </IonCardContent>           
+          {/* </IonCardContent>            */}
         </IonCard>
   
 

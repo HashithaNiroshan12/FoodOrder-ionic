@@ -11,7 +11,12 @@
   margin-right: auto;
 }
 
-.btn1{
+/* .btn1{
   
 
+} */
+
+.username{
+  background-color: rgb(216, 228, 235);
+  font-weight: 600;
 }

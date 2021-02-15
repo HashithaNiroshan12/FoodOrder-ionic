@@ -10,45 +10,9 @@ import About from './About';
 import Cart from './Cart';
 import Contact from './Contact';
 import Home from './Home';
+import '../theme/menu.css';
 
-
-// type Item = {
-//   id:string;
-//   url: string;
-//   text: string;
-//   link:string;
-// };
-
-// const items: Item[] = [
-//   { 
-//     id:'m1',
-//     url: '../../assets/images/rice/chickenrice.jpg',
-//    text: 'RICE' ,
-//    link:'/rice'
-//   },
-//   {
-//     id:'m2',
-//     url: '../../assets/images/kottu/vegekottu.jpeg',
-//    text: 'KOTTU' ,
-//    link:'/kottu'
-//   },
-//   {
-//     id:'m3',
-//     url: '../../assets/images/shorteats/apecial.jpg',
-//     text: 'SHORTEATS' ,
-//     link:'/shorteats'
-//    },
-//    {
-//     id:'m4',
-//     url: '../../assets/images/dessert/dessert.jpeg',
-//     text: 'DESSERTS' ,
-//     link:'/desserts'
-//    },
-
-
-// ];
-
-
+ 
 
 
 const Menu: React.FC = () => {
@@ -85,26 +49,27 @@ useEffect(() => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar >
-          
-          <IonButtons>
-            <IonMenuButton autoHide={true} />
+      <IonHeader >
+        <IonToolbar color="light">
+        <IonTitle ><b>MENU</b></IonTitle>
+          <IonButtons slot="start">
+            <IonMenuButton />
           </IonButtons>
-          <IonTitle >{name}</IonTitle>
+          
         </IonToolbar>
       </IonHeader>
       
       <IonContent fullscreen>
+        
        <IonRow>
          <IonCol size-md="4" offset-md="4">
          {menus.map((image, i) => (
          <IonCard color="medium" key={i} >
-            <IonItem>
-              <IonIcon  />
-              <IonLabel >{image.text}</IonLabel>
-              {/* <IonImg src="garlic.jpg"></IonImg> */}
-              <IonButton fill="outline" slot="end" routerLink={image.link}>View</IonButton>
+            <IonItem lines="full" color="tertiary">
+             
+              <IonLabel color="dark" className="text">{image.text}</IonLabel>
+           
+              <IonButton fill="outline" slot="end" routerLink={image.link}><b>View</b></IonButton>
             </IonItem>
 
              <IonCardContent>
@@ -141,17 +106,17 @@ useEffect(() => {
                 <IonLabel>Home</IonLabel>
               </IonTabButton> */}
               <IonTabButton tab="Cart" href="/cart">
-                <IonIcon icon={cartSharp} />
-                <IonLabel>Cart</IonLabel>
+                <IonIcon color="dark" icon={cartSharp} />
+                <IonLabel color="dark">Cart</IonLabel>
                 <IonBadge color="primary"><b>{cart.length}</b></IonBadge>
               </IonTabButton>
               <IonTabButton tab="Contact" href="/contact">
-                <IonIcon icon={reader} />
-                <IonLabel>Contact</IonLabel>
+                <IonIcon color="dark" icon={reader} />
+                <IonLabel color="dark">Contact</IonLabel>
               </IonTabButton>
               <IonTabButton tab="About" href="/about">
-                <IonIcon icon={informationCircle} />
-                <IonLabel>About</IonLabel>
+                <IonIcon color="dark" icon={informationCircle} />
+                <IonLabel color="dark">About</IonLabel>
               </IonTabButton>
 
           </IonTabBar>

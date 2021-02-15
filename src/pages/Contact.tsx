@@ -38,16 +38,16 @@ const Contact: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="light">
         <IonButtons slot="start">
            <IonBackButton defaultHref="/menu"/>
          </IonButtons>
-          <IonTitle>Feedback</IonTitle>
+          <IonTitle><b>FEEDBACK</b></IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" >
 
-      <IonItem>
+      <IonItem >
           <IonLabel>Inquiry Type</IonLabel>
           <IonSelect  value={type} onIonChange={(e:any) => setType(e.detail.value)} >
             <IonSelectOption >Contact</IonSelectOption>

@@ -45,11 +45,11 @@ const Menushorteats: React.FC = () => {
   return (
     <IonPage>
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color="light">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/menu"/>
             </IonButtons>
-            <IonTitle>SHORTEATS</IonTitle>
+            <IonTitle><b>SHORTEATS</b></IonTitle>
           </IonToolbar>
         </IonHeader>
 
