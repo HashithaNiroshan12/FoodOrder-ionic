@@ -32,7 +32,7 @@ const DescSamosa: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("samosa").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#SS104").set({          //.doc("basmathi rice").
       
     title:'SAMOSA',
     price:'30.00',
@@ -41,8 +41,17 @@ const DescSamosa: React.FC = () => {
     total:30.00*qty,
     time:time,
     date:date
-    
+  })
 
+  db.collection('order').doc("#SS104").set({          //.doc("basmathi rice").
+      
+    title:'SAMOSA',
+    price:'30.00',
+    url:'../../assets/images/shorteats/samosa.jpg' ,
+    qty:qty,
+    total:30.00*qty,
+    time:time,
+    date:date
   })
   .then(() => {
     

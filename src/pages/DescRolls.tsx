@@ -34,7 +34,7 @@ const DescRolls: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("rolls").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#SR103").set({          //.doc("basmathi rice").
       
     title:'VEGE ROLLS',
     price:'50.00',
@@ -43,9 +43,18 @@ const DescRolls: React.FC = () => {
     total:50.00*qty,
     time:time,
     date:date
-    
-
   })
+
+  db.collection('order').doc("#SR103").set({          //.doc("basmathi rice").
+      
+  title:'VEGE ROLLS',
+  price:'50.00',
+  url:'../../assets/images/shorteats/rolls.jpg' ,
+  qty:qty,
+  total:50.00*qty,
+  time:time,
+  date:date
+})
   .then(() => {
     
     alert("Add to Cart Successfully");

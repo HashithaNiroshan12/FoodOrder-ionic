@@ -30,7 +30,7 @@ const DescLayered: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("threelayered rice").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#TR122").set({          //.doc("basmathi rice").
     type:type,   
     title:' THREE LAYERED RICE',
     price:'400.00',
@@ -39,9 +39,18 @@ const DescLayered: React.FC = () => {
     total:400.00*qty*type,
     time:time,
     date:date
-    
-
   })
+
+  db.collection('order').doc("#TR122").set({          //.doc("basmathi rice").
+  type:type,   
+  title:' THREE LAYERED RICE',
+  price:'400.00',
+  url:'../../assets/images/rice/threelayeredrice.jpg' ,
+  qty:qty,
+  total:400.00*qty*type,
+  time:time,
+  date:date
+})
   .then(() => {
     
     alert("Add to Cart Successfully");

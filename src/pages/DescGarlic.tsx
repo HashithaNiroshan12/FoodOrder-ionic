@@ -70,8 +70,18 @@ const DescGarlic: React.FC = () => {
     total:350.00*qty*type,
     time:time,
     date:date
-
   })
+
+  db.collection('order').doc("#GR121").set({         //doc("garlic rice").
+  type:type,   
+  title:'GARLIC RICE',
+  price:'350.00',
+  url:'../../assets/images/rice/garlic.jpg' ,
+  qty:qty,
+  total:350.00*qty*type,
+  time:time,
+  date:date
+})
   .then(() => {
     alert("Add to Cart Successfully");
   })

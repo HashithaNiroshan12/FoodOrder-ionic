@@ -33,7 +33,7 @@ const DescMalubanis: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("malupan").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#SM101").set({          //.doc("basmathi rice").
       
     title:'MALU BANIS',
     price:'30.00',
@@ -42,8 +42,17 @@ const DescMalubanis: React.FC = () => {
     total:30.00*qty,
     time:time,
     date:date
-    
+  })
 
+  db.collection('order').doc("#SM101").set({          //.doc("basmathi rice").
+      
+    title:'MALU BANIS',
+    price:'30.00',
+    url:'../../assets/images/shorteats/malupan.jpg' ,
+    qty:qty,
+    total:30.00*qty,
+    time:time,
+    date:date
   })
   .then(() => {
     

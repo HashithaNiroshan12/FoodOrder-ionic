@@ -43,7 +43,7 @@ const DescChickenkottu: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("chicken kottu").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#CKK202").set({          //.doc("basmathi rice").
     type:type,   
     title:'CHICKEN KOTTU',
     price:'400.00',
@@ -52,9 +52,18 @@ const DescChickenkottu: React.FC = () => {
     total:400.00*qty*type,
     time:time,
     date:date
-    
-
   })
+
+  db.collection('order').doc("#CKK202").set({          //.doc("basmathi rice").
+  type:type,   
+  title:'CHICKEN KOTTU',
+  price:'400.00',
+  url:'../../assets/images/kottu/chickenkottu.jpg' ,
+  qty:qty,
+  total:400.00*qty*type,
+  time:time,
+  date:date
+})
   .then(() => {
     
     alert("Add to Cart Successfully");

@@ -31,7 +31,7 @@ const DescPattis: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("pattis").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#SP102").set({          //.doc("basmathi rice").
       
     title:'PATTIS',
     price:'35.00',
@@ -40,9 +40,18 @@ const DescPattis: React.FC = () => {
     total:35.00*qty,
     time:time,
     date:date
-    
-
   })
+
+  db.collection('order').doc("#SP102").set({          //.doc("basmathi rice").
+      
+  title:'PATTIS',
+  price:'35.00',
+  url:'../../assets/images/shorteats/Pattis.JPG' ,
+  qty:qty,
+  total:35.00*qty,
+  time:time,
+  date:date
+})
   .then(() => {
     
     alert("Add to Cart Successfully");

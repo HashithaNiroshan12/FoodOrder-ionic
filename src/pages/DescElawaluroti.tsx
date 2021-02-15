@@ -41,9 +41,18 @@ const DescElawaluroti: React.FC = () => {
     total:45.00*qty,
     time:time,
     date:date
-    
-
   })
+
+  db.collection('order').doc("#SE100").set({          //.doc("basmathi rice").
+      
+  title:'ELAWALUROTTI',
+  price:'45.00',
+  url:'../../assets/images/shorteats/Elawaluroti.jpeg' ,
+  qty:qty,
+  total:45.00*qty,
+  time:time,
+  date:date
+})
   .then(() => {
     
     alert("Add to Cart Successfully");

@@ -9,31 +9,6 @@ import { connect } from 'react-redux';
 
 
 import '../theme/Desc.css';
-
- type Description = {
-  // id:string,
-  title:string,
-  price:string,
-  url: string;
-  add: string;
- 
-
-};
-
-// const desrice :Description[] = [
-//   {
-//     // id:'m1',
-//     title:'GARLIC RICE',
-//     price:'350.00',
-//     url:'../../assets/images/rice/garlic.jpg',
-//     add:'Vegetable Chopsuey, Chutney, Omelet,Chilli Paste,Green Peas',
-   
-//   }
- 
-
-// ];
-
-
    
 const DescPudin: React.FC = () => {
 

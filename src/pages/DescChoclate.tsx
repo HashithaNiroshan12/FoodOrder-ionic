@@ -41,8 +41,17 @@ const DescChoclate: React.FC = () => {
     total:200.00*qty,
     time:time,
     date:date
-    
+  })
 
+  db.collection('cart').doc("#DCC321").set({          //.doc("basmathi rice").
+    type:type,   
+    title:'CHOCOLATE CAKE',
+    price:'200.00',
+    url:'../../assets/images/dessert/choclatecake.jpg' ,
+    qty:qty,
+    total:200.00*qty,
+    time:time,
+    date:date
   })
   .then(() => {
     

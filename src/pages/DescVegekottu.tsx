@@ -11,18 +11,6 @@ import { connect } from 'react-redux';
 import '../theme/Desc.css';
 import { toast } from '../toast';
 
-//  type Description = {
-//   // id:string,
-//   title:string,
-//   price:string,
-//   url: string;
-//   add: string;
- 
-
-// };
-
-
-
 
    
 const DescVegekottu: React.FC = () => {
@@ -45,7 +33,7 @@ const DescVegekottu: React.FC = () => {
       return toast('Fields are required');
      } 
 
-  db.collection('cart').doc("vegekottu").set({          //.doc("basmathi rice").
+  db.collection('cart').doc("#VK201").set({          //.doc("basmathi rice").
     type:type,   
     title:' VEGE KOTTU',
     price:'250.00',
@@ -54,8 +42,17 @@ const DescVegekottu: React.FC = () => {
     total:250.00*qty*type,
     time:time,
     date:date
-    
+  })
 
+  db.collection('order').doc("#VK201").set({          //.doc("basmathi rice").
+    type:type,   
+    title:' VEGE KOTTU',
+    price:'250.00',
+    url:'../../assets/images/kottu/vegekottu.jpeg' ,
+    qty:qty,
+    total:250.00*qty*type,
+    time:time,
+    date:date
   })
   .then(() => {
     

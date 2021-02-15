@@ -39,9 +39,18 @@ const DescCaremal: React.FC = () => {
     total:160.00*qty,
     time:time,
     date:date
-    
-
   })
+
+  db.collection('order').doc("#DC320").set({          //.doc("basmathi rice").
+  type:type,   
+  title:'CAREMAL',
+  price:'160.00',
+  url:'../../assets/images/dessert/caremal.jpg' ,
+  qty:qty,
+  total:160.00*qty,
+  time:time,
+  date:date
+})
   .then(() => {
     
     alert("Add to Cart Successfully");

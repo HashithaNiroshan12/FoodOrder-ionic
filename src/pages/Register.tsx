@@ -23,8 +23,7 @@ const Register: React.FC = () => {
 
 
   async function register(){
-     
-   
+  
     if(password !== Cpassword){
       return toast('Passwords do not match')
     }
@@ -142,8 +141,6 @@ const Register: React.FC = () => {
 
                 <p className="ion-text-center ion-padding-top">Already have an account? <Link to="/login" >Login </Link></p>
               
-                {/* <IonButton routerLink="/login" expand="full" color="primary">Login</IonButton> */}
-
         </IonCardContent>
         </IonCard >
         
