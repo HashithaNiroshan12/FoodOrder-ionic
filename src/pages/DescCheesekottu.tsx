@@ -10,17 +10,7 @@ import { connect } from 'react-redux';
 
 import '../theme/Desc.css';
 import { toast } from '../toast';
-
-//  type Description = {
-//   // id:string,
-//   title:string,
-//   price:string,
-//   url: string;
-//   add: string;
- 
-
-// };
-
+import Star from '../components/Star';
 
 
    
@@ -123,7 +113,8 @@ const DescCheesekottu: React.FC = () => {
            </IonItem>
        
           <IonItem color="medium" lines="full">         
-            <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
+            <IonLabel><IonImg src={menu.url}></IonImg>
+            <IonLabel color="dark" slot="end"><Star /></IonLabel></IonLabel>  
           </IonItem>
           
           <IonCardContent>

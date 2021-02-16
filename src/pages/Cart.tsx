@@ -137,7 +137,7 @@ const Cart: React.FC = () => {
               <IonThumbnail slot="start">
                   <IonImg src={cart.url}/>                 
               </IonThumbnail>
-              <IonLabel className="totalPrice">{cart.title}
+              <IonLabel className="totalPrice">{cart.title} <IonLabel  color="success">Type:{cart.type}</IonLabel>
                </IonLabel>                      
            </IonItem>
            <IonItem>                     
@@ -148,7 +148,7 @@ const Cart: React.FC = () => {
                    {/* {cart.total+=cart.total} */}
           
            <IonItem>
-              <IonLabel  color="success">Type:{cart.type}</IonLabel>
+             
               <IonLabel className="totalPrice">Total Price:</IonLabel> <IonLabel className="totalPrice">Rs.{cart.total}.00</IonLabel> 
              </IonItem>            
                           

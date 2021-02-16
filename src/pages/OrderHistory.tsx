@@ -44,6 +44,8 @@ const OrderHistory: React.FC = () => {
 
   }, [])
 
+  const errMsg = 'You have no History of Order.';
+
   return (
     <IonPage>
         
@@ -73,8 +75,11 @@ const OrderHistory: React.FC = () => {
            
          {/* </IonToolbar> */}
       </IonHeader>
-
+      {order.length >0 ?(
       <IonContent className="scroll-content ion-padding" >
+       
+
+       
       {order.map((order,id) => (
           <IonCard key={id}>
             <IonCardContent className="ion-padding">
@@ -115,16 +120,13 @@ const OrderHistory: React.FC = () => {
           </IonCard>
       ))}
        
-
+     
       </IonContent>
 
-      
+):(<b><p style={{textAlign:'center',fontWeight:700}}>{errMsg}</p></b>)}
          
       
-         
      
-         
-      {/* footer */}
 
       <Footer/>
     </IonPage>

@@ -13,6 +13,7 @@ import '../theme/Desc.css';
 import { useSelector } from 'react-redux';
 import { toast } from '../toast';
 import { Redirect } from 'react-router';
+import Star from '../components/Star';
 
 
 
@@ -138,7 +139,9 @@ const Descrice: React.FC = () => {
            </IonItem>
        
           <IonItem lines="full" color="medium">         
-            <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
+            <IonLabel><IonImg src={menu.url}></IonImg>
+            <IonLabel color="dark" slot="end"><Star /></IonLabel></IonLabel>  
+            
           </IonItem>
           
           <IonCardContent>

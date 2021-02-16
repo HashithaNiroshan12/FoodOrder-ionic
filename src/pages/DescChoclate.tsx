@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import '../theme/Desc.css';
 import { toast } from '../toast';
+import Star from '../components/Star';
 
  
 const DescChoclate: React.FC = () => {
@@ -43,7 +44,7 @@ const DescChoclate: React.FC = () => {
     date:date
   })
 
-  db.collection('cart').doc("#DCC321").set({          //.doc("basmathi rice").
+  db.collection('order').doc("#DCC321").set({          //.doc("basmathi rice").
     type:type,   
     title:'CHOCOLATE CAKE',
     price:'200.00',
@@ -113,7 +114,8 @@ const DescChoclate: React.FC = () => {
            </IonItem>
        
           <IonItem color="medium" lines="full">         
-            <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
+            <IonLabel><IonImg src={menu.url}></IonImg>
+            <IonLabel color="dark" slot="end"><Star /></IonLabel></IonLabel>  
           </IonItem>
           
           <IonCardContent>

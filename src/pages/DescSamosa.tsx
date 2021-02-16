@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import '../theme/Desc.css';
 import { toast } from '../toast';
+import Star from '../components/Star';
 
  
 const DescSamosa: React.FC = () => {
@@ -111,7 +112,9 @@ const DescSamosa: React.FC = () => {
            </IonItem>
        
           <IonItem color="medium" lines="full">         
-            <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
+            <IonLabel><IonImg src={menu.url}></IonImg>
+            <IonLabel color="dark" slot="end"><Star />
+            </IonLabel></IonLabel>  
           </IonItem>
           
           <IonCardContent>

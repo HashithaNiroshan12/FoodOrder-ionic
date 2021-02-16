@@ -3,6 +3,7 @@ import { addCircle, addCircleOutline, atCircleOutline, bicycleSharp, information
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Footer from '../components/Footer';
+import Star from '../components/Star';
 import { db } from '../firebaseConfig';
 
 
@@ -109,7 +110,8 @@ const DescLayered: React.FC = () => {
            </IonItem>
        
           <IonItem color="medium" lines="full">         
-            <IonLabel><IonImg src={menu.url}></IonImg></IonLabel>  
+            <IonLabel><IonImg src={menu.url}></IonImg>
+            <IonLabel color="dark" slot="end"><Star /></IonLabel></IonLabel>  
           </IonItem>
           
           <IonCardContent>
